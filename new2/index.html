@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <title>Login And Registration Form</title>
+        <link rel="stylesheet" href="style_index.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Glass Website</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+    </head>
+    
+    <body>
+        <main>
+        
+            <div class="alert" id='we'>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong id="x"> Warning! Indicates a dangerous or potentially negative action.</strong>
+             </div>
+            
+             <div class="positive" id='ke'>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong id="y"> Success! Indicates a dangerous or potentially negative action.</strong>
+             </div>
+            
+
+        <div class="hero">
+              <div class="form-box">
+              <div class="button-box">
+                  <div id="btn"></div>
+                  <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                  <button type="button" class="toggle-btn" onclick="register()">Register</button>
+                </div>
+                <div class="social-icons">
+                    <img src="fb.png">
+                    <img src="twitter.png">
+                    <img src="gmail.png">
+                </div>
+
+                <form id="login" class="input-group" action="function.php" method="POST">
+                    <input type="text" class="input-field" name="username" placeholder="User Id" required>
+                    <input type="password" class="input-field" name="password" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box"><span>Remember password</span>
+                    <button type="submit" class="submit-btn" name="log_in">Log in</button>
+
+                </form>
+                <form id="register" class="input-group" action="function.php" method="POST">
+                    <input type="text" class="input-field" name="username" placeholder="User Id" required>
+                    <input type="email" class="input-field" name="email" placeholder="Email Id" required>
+                    <input type="text" class="input-field" name="password" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+                    <button type="submit" class="submit-btn" name="register"  onclick="getParameter()">Register</button>
+
+                </form>
+            </div>
+        </div>
+
+    
+
+        <script>
+            var x=document.getElementById("login");
+            var y=document.getElementById("register");
+            var z=document.getElementById("btn");
+            
+           
+        
+            function register(){
+                x.style.left="-550px";
+                y.style.left="50px";
+                z.style.left="110px";
+            }
+
+            function login(){
+                x.style.left="50px";
+                y.style.left="550px";
+                z.style.left="0px";
+            }
+            
+
+            let parameter=new URLSearchParams(window.location.search)
+        if(parameter.get("Alert")==="negative"){
+
+            const div =  document.getElementById('we');
+            div.parentNode.appendChild(div);
+            var q=document.getElementById("x");
+            q.parentNode.appendChild(q);
+
+
+            const divv =  document.getElementById('ke');
+            divv.parentNode.removeChild(divv);
+            var w=document.getElementById("y");
+            w.parentNode.removeChild(w);
+
+        }
+        if(parameter.get("Alert")==="success"){
+
+            const div =  document.getElementById('ke');
+            div.parentNode.appendChild(div);
+            var q=document.getElementById("y");
+            q.parentNode.appendChild(q);
+            
+            const divv =  document.getElementById('we');
+            divv.parentNode.removeChild(divv);
+            var w=document.getElementById("x");
+            w.parentNode.removeChild(w);
+
+        }
+        else{
+            const divv =  document.getElementById('we');
+            divv.parentNode.removeChild(divv);
+            const div =  document.getElementById('ke');
+            div.parentNode.removeChild(div);
+            
+            var w=document.getElementById("x");
+            w.parentNode.removeChild(w);
+
+          
+            var q=document.getElementById("y");
+            q.parentNode.removeChild(q);
+
+        }
+
+
+            </script>
+
+    </main>
+  
+    </body>
+</html>
